@@ -1,15 +1,18 @@
 import { Card, Chip, Typography } from '@mui/material';
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { TClass } from '../types';
+
+interface ClassCardProps {
+    Name: string
+    Students: string[]
+}
 
 
 export default function ClassCard ({
     Name,
     Students
-}: {
-    Name: string,
-    Students: string[]
-}){    
+}: ClassCardProps) 
+{    
     return (
         <Card sx={{margin:2,padding:1.5}}>
             <Typography>Name: {Name}</Typography>

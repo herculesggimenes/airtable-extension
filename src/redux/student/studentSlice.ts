@@ -7,7 +7,7 @@ import { authenticateStudent } from './studentAction'
 export type TStudentState = {
   loading:boolean
   studentInfo?: TStudent
-  error?: any
+  error?: string
   success: boolean
 }
 
@@ -48,7 +48,9 @@ const studentSlice = createSlice({
       ).addCase(
         authenticateStudent.rejected,(state, {payload}) =>{
           state.loading = false
-          state.error = payload
+          if (typeof payload === 'string'){
+            state.error = payload
+          }
         }
       )
     },

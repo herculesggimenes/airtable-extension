@@ -1,10 +1,9 @@
 import { Box, Button, Grid, Paper, TextField, Typography } from '@mui/material'
-import { useDispatch, useSelector } from 'react-redux'
 import { useFormik } from 'formik';
 import {useNavigate} from 'react-router-dom'
-import React from 'react'
+import React, {useEffect} from 'react'
 import * as yup from 'yup'
-import { RootState, selectStudent, useAppDispatch, useAppSelector, authenticateStudent, selectClassesRequestResult } from '../redux';
+import { selectStudent, useAppDispatch, useAppSelector, authenticateStudent, selectClassesRequestResult } from '../redux';
 
 
 function LoginPage () {
@@ -18,11 +17,11 @@ function LoginPage () {
         .then(
             res => {
                 if(res.meta.requestStatus === 'rejected'){
-                    alert("Student not found")
+                    alert(res.payload)
                 }
             }
         )
-    }
+    } 
     
     const validationSchema = yup.object({
         student: yup
@@ -40,7 +39,7 @@ function LoginPage () {
         },
     });
     
-    React.useEffect(()=>{
+    useEffect(()=>{
         if(student){
             navigate('/classes',{relative:'path'})
         }
@@ -56,7 +55,7 @@ function LoginPage () {
     return (
         <Box sx={{height:'100vh',display:'flex' ,alignItems:"center", justifyContent:'center'}}>
             <Paper sx={{margin:3, padding:3}}>
-                <form onSubmit={formik.handleSubmit} style={{}}>
+                <form onSubmit={formik.handleSubmit}>
                     <TextField
                     fullWidth
                     id="student"

@@ -1,9 +1,8 @@
-import { Button, Grid, TextField, Typography, Box, Stack } from '@mui/material'
+import { Button, Grid, Box, Stack } from '@mui/material'
 import {useNavigate} from 'react-router-dom'
 import ClassCard from '../components/ClassCard'
-import React from 'react'
-import {selectStudent, useAppDispatch, useAppSelector,
-     authenticateStudent, selectClasses, getClassesByIds, logout } from '../redux';
+import {useEffect} from 'react'
+import {selectStudent, useAppDispatch, useAppSelector, selectClasses, getClassesByIds, logout } from '../redux';
 
 function ClassesPage () {
     const student = useAppSelector(selectStudent);
@@ -11,7 +10,7 @@ function ClassesPage () {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
-    React.useEffect(()=>{
+    useEffect(()=>{
         if(!student){
             navigate('/',{relative:'path'})
             return
@@ -39,10 +38,9 @@ function ClassesPage () {
             <Stack>
             {classes?.map((studentClass) => (
                 <ClassCard 
-                key={studentClass.Id} 
-                Name={studentClass.Name}
-                Students={studentClass.StudentsNames}
-                />
+                    key={studentClass.Id}
+                    Name={studentClass.Name}
+                    Students={studentClass.StudentsNames}/>
             ))}
             </Stack>
         </Grid>

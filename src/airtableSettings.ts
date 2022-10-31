@@ -1,7 +1,7 @@
 import { AirtableSettings } from "./types";
 
 export const airtableSettings : AirtableSettings = {
-    API_KEY: "<INSERT KEY HERE>",
+    API_KEY: "<Insert Key Here>",
     BASE_ID: "app8ZbcPx7dkpOnP0",
     CLASSES_TABLE_ID: "tblgh8YARZPqeJF07",
     CLASSES_NAME_FIELD_ID:"fldkSRh4WHOHOyYLf",

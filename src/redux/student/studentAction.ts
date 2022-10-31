@@ -19,12 +19,8 @@ export const authenticateStudent = createAsyncThunk(
         }
       ).catch(
         error =>{
-            if (error.response && error.response.data.message) {
-                return rejectWithValue(error.response.data.message)
-              } else {
-                console.log(error)
-                return rejectWithValue(error.message)
-              }
+          console.log(error)
+          return rejectWithValue(error.error.message)
         }
       )
       return response;

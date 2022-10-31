@@ -72,7 +72,7 @@ export function fetchStudentByName(studentName: string): Promise<TAirtableQueryR
               },
               function done(err) {
                 if (err || output.length == 0) {
-                  return reject(returnError(err || "Student Not Found"));
+                  return reject(returnError(err || {message:"Student Not Found"}));
                 }
                 return resolve(returnSuccess(output));
               }
